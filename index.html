@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>KOVA Song Archive - Portfolio Visualizer</title>
+    <title>KOVA Song Archive - Portfolio</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -15,14 +15,11 @@
                     colors: {
                         "primary": "#000000",
                         "background": "#fdf9f1",
-                        "on-background": "#1c1c17",
-                        "surface-container": "#f1ede5",
-                        "secondary": "#5e5e5e",
-                        "kova-green": "#7ed321"
+                        "kova-green": "#7ed321",
+                        "kova-gray": "#9a9a9a"
                     },
                     fontFamily: {
                         "body-md": ["Hanken Grotesk"],
-                        "headline-lg": ["Hanken Grotesk"],
                         "label-technical": ["JetBrains Mono"]
                     }
                 }
@@ -32,58 +29,85 @@
     <style>
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
         
+        /* Sidebar fija */
+        .sidebar {
+            height: calc(100vh - 100px);
+            position: sticky;
+            top: 50px;
+        }
+
         /* Efecto 3D y Borde KOVA */
         .portfolio-item {
-            transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid rgba(0,0,0,0.05);
+            transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);
+            border: 1px solid rgba(0,0,0,0.08);
             transform: translateY(0);
         }
         
         .portfolio-item:hover {
             border-color: #7ed321;
             border-width: 3px;
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
             z-index: 10;
         }
 
-        .album-cover-transition { transition: all 500ms ease-in-out; }
-        .portfolio-item:hover .album-cover-transition { filter: grayscale(0); }
-        
-        [v-cloak] { display: none; }
-        
-        /* Estilo para los botones de filtro */
-        .filter-btn.active {
-            background-color: #000000;
-            color: #ffffff;
-            border-color: #000000;
+        .filter-btn {
+            text-align: left;
+            transition: all 200ms ease;
+            border-left: 2px solid transparent;
         }
+
+        .filter-btn.active {
+            border-left: 2px solid #7ed321;
+            color: #000;
+            padding-left: 1.25rem;
+            font-weight: 700;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #fdf9f1; }
+        ::-webkit-scrollbar-thumb { background: #000; }
     </style>
 </head>
-<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased">
+<body class="bg-background text-primary min-h-screen font-body-md antialiased overflow-x-hidden">
     
-    <header class="bg-background w-full border-b border-on-surface/10 flex flex-col items-center px-6 md:px-10 py-6 md:py-8 gap-6">
-        <div class="flex justify-between items-center w-full max-w-6xl">
-            <h1 class="text-2xl md:text-3xl font-bold tracking-tighter text-primary uppercase">KOVA Song Archive</h1>
-            <span class="font-label-technical text-[10px] text-[#9a9a9a] uppercase tracking-[0.3em] hidden md:block">Boutique Recording Studio</span>
+    <header class="w-full border-b border-black/5 px-6 md:px-12 py-8 flex justify-between items-center bg-background/80 backdrop-blur-md sticky top-0 z-50">
+        <h1 class="text-2xl font-bold tracking-tighter uppercase">KOVA Song Archive</h1>
+        <div class="font-label-technical text-[10px] text-kova-gray tracking-[0.3em] uppercase">
+            EST. 2024 / Portfolio
         </div>
-
-        <div id="filter-container" class="flex flex-wrap justify-center gap-3 font-label-technical text-[10px] uppercase tracking-widest pt-4">
-            <button onclick="filterByGenre('all')" class="filter-btn active border border-primary/20 px-4 py-2 hover:border-primary transition-all">All Tracks</button>
-            </div>
     </header>
 
-    <main class="flex-grow px-4 md:px-10 py-12 flex flex-col items-center">
-        <div class="w-full max-w-4xl flex flex-col gap-8" id="archive-container">
-            <div class="text-center py-20 animate-pulse" id="loading-state">
-                <span class="font-label-technical text-xs uppercase tracking-widest opacity-50 text-[#9a9a9a]">Reading Metadata / 48kHz...</span>
+    <div class="max-w-[1600px] mx-auto flex flex-col md:flex-row px-6 md:px-12 py-12 gap-12">
+        
+        <aside class="w-full md:w-64 shrink-0">
+            <div class="sidebar flex flex-col gap-8">
+                <div>
+                    <h3 class="font-label-technical text-[11px] text-kova-gray uppercase tracking-[0.2em] mb-6">Filtros por Género</h3>
+                    <div id="filter-container" class="flex flex-col gap-4 font-label-technical text-[10px] uppercase tracking-widest">
+                        <button onclick="filterByGenre('all', this)" class="filter-btn active hover:pl-5 transition-all">All Projects</button>
+                        </div>
+                </div>
+                
+                <div class="mt-auto pb-12 opacity-40">
+                    <p class="font-label-technical text-[9px] leading-relaxed uppercase tracking-tighter">
+                        KOVA Recording Studio<br>
+                        Digital Archive v1.2<br>
+                        Audio Excellence
+                    </p>
+                </div>
             </div>
-        </div>
-    </main>
+        </aside>
 
-    <footer class="py-12 border-t border-on-surface/10 flex justify-between px-10">
-        <span class="font-label-technical text-[10px] text-[#9a9a9a] uppercase tracking-widest">© 2026 KOVA RS / 48kHz</span>
-    </footer>
+        <main class="flex-grow">
+            <div class="grid grid-cols-1 gap-8" id="archive-container">
+                <div class="text-center py-20 animate-pulse" id="loading-state">
+                    <span class="font-label-technical text-xs uppercase tracking-widest opacity-50">Syncing with Drive / 48kHz...</span>
+                </div>
+            </div>
+        </main>
+    </div>
 
     <script>
         const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRCZ5H_tX3r41I_npaw0nNJWxoGGucLKvTO2mC0w1SdSm8g7T1nEte1wcVhldjT14u-tygZMCnt9eVY/pub?gid=0&single=true&output=csv';
@@ -110,70 +134,66 @@
                 renderFilters();
                 renderItems(allSongs);
                 document.getElementById('loading-state')?.remove();
-            } catch (e) {
-                console.error(e);
-            }
+            } catch (e) { console.error(e); }
         }
 
         function renderFilters() {
-            const filterContainer = document.getElementById('filter-container');
+            const container = document.getElementById('filter-container');
             const genres = [...new Set(allSongs.map(s => s.Genre).filter(g => g))];
             
             genres.forEach(genre => {
                 const btn = document.createElement('button');
-                btn.className = 'filter-btn border border-primary/20 px-4 py-2 hover:border-primary transition-all';
+                btn.className = 'filter-btn opacity-60 hover:opacity-100 hover:pl-5 transition-all';
                 btn.textContent = genre;
-                btn.onclick = () => filterByGenre(genre, btn);
-                filterContainer.appendChild(btn);
+                btn.onclick = (e) => filterByGenre(genre, e.target);
+                container.appendChild(btn);
             });
         }
 
-        function filterByGenre(genre, btnElement = null) {
-            // Actualizar estado de botones
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            if(btnElement) btnElement.classList.add('active');
-            else document.querySelector('.filter-btn').classList.add('active');
+        function filterByGenre(genre, btnElement) {
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.classList.remove('active', 'opacity-100');
+                b.classList.add('opacity-60');
+            });
+            btnElement.classList.add('active', 'opacity-100');
 
-            const filtered = genre === 'all' 
-                ? allSongs 
-                : allSongs.filter(s => s.Genre === genre);
-            
+            const filtered = genre === 'all' ? allSongs : allSongs.filter(s => s.Genre === genre);
             renderItems(filtered);
         }
 
         function renderItems(items) {
             const container = document.getElementById('archive-container');
-            container.innerHTML = ''; // Limpiar
+            container.innerHTML = '';
 
             items.forEach(item => {
                 const coverContent = (item.Cover && item.Cover.trim() !== "") 
-                    ? `<img alt="${item.Song}" class="w-full h-full object-cover grayscale contrast-125 album-cover-transition" src="${item.Cover}" onerror="this.parentElement.innerHTML='<span class=\'material-symbols-outlined text-4xl text-[#9a9a9a] opacity-40\'>album</span>'"/>`
-                    : `<span class="material-symbols-outlined text-4xl text-[#9a9a9a] opacity-40">album</span>`;
+                    ? `<img alt="${item.Song}" class="w-full h-full object-cover grayscale contrast-125 transition-all duration-700 group-hover:grayscale-0 group-hover:scale-105" src="${item.Cover}" onerror="this.parentElement.innerHTML='<span class=\'material-symbols-outlined text-4xl text-kova-gray opacity-20\'>album</span>'"/>`
+                    : `<span class="material-symbols-outlined text-4xl text-kova-gray opacity-20">album</span>`;
 
                 const html = `
-                    <div class="portfolio-item bg-[#ede9e1] relative flex flex-col md:flex-row items-center justify-between p-6 md:p-10 gap-6 md:gap-8">
-                        <span class="absolute top-3 right-4 font-label-technical text-[9px] text-[#9a9a9a] uppercase tracking-widest opacity-80">KOVA RS / 48kHz</span>
+                    <div class="portfolio-item group bg-[#ede9e1] relative flex flex-col md:flex-row items-center justify-between p-6 md:p-8 gap-8 overflow-hidden">
+                        <span class="absolute top-4 right-6 font-label-technical text-[8px] text-kova-gray uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">KOVA RS // ANALOG CHAIN</span>
                         
-                        <div class="flex flex-col md:flex-row items-center text-center md:text-left gap-6 md:gap-10 w-full">
-                            <div class="w-28 h-28 overflow-hidden shrink-0 bg-white border border-black/5 flex items-center justify-center shadow-sm">
+                        <div class="flex flex-col md:flex-row items-center gap-8 w-full">
+                            <div class="w-32 h-32 md:w-24 md:h-24 shrink-0 bg-white border border-black/5 flex items-center justify-center shadow-inner overflow-hidden">
                                 ${coverContent}
                             </div>
 
-                            <div class="flex flex-col gap-1 w-full">
-                                <h2 class="text-xl md:text-2xl text-[#0b0b0b] font-bold tracking-tight">${item.Song}</h2>
-                                <p class="text-sm md:text-base text-[#0b0b0b] opacity-80">${item.Artist}</p>
+                            <div class="flex flex-col gap-1 w-full text-center md:text-left">
+                                <h2 class="text-xl md:text-2xl font-bold tracking-tight text-[#0b0b0b]">${item.Song}</h2>
+                                <p class="text-sm text-kova-gray font-medium uppercase tracking-wide">${item.Artist}</p>
                                 
-                                <div class="flex flex-row flex-wrap justify-center md:justify-start gap-x-3 gap-y-1 mt-4">
-                                    <span class="font-label-technical text-[9px] text-[#9a9a9a] uppercase tracking-widest border border-black/10 px-2 py-1">${item.Genre}</span>
-                                    <span class="font-label-technical text-[9px] text-[#9a9a9a] uppercase tracking-widest border border-black/10 px-2 py-1">${item.Date}</span>
-                                    <span class="font-label-technical text-[9px] text-[#9a9a9a] uppercase tracking-widest border border-black/10 px-2 py-1">${item.Credits}</span>
+                                <div class="flex flex-wrap justify-center md:justify-start gap-4 mt-4 font-label-technical text-[9px] text-kova-gray uppercase tracking-widest">
+                                    <span class="bg-black/5 px-2 py-1">${item.Genre}</span>
+                                    <span class="bg-black/5 px-2 py-1">${item.Date}</span>
+                                    <span class="bg-black/5 px-2 py-1">${item.Credits}</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="flex items-center w-full md:w-auto">
-                            <a href="${item.Link}" target="_blank" class="w-full md:w-auto bg-black text-white px-8 py-3 font-label-technical text-[10px] uppercase tracking-[0.2em] hover:bg-kova-green hover:text-black transition-all text-center">
-                                Escuchar
+                            <a href="${item.Link}" target="_blank" class="w-full md:w-auto bg-black text-white px-10 py-4 font-label-technical text-[10px] uppercase tracking-[0.2em] hover:bg-kova-green hover:text-black transition-all">
+                                Open Project
                             </a>
                         </div>
                     </div>`;
