@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;html class="light" lang="en"&gt;&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="utf-8"/&gt;</p>
+<p class="p1">&lt;meta content="width=device-width, initial-scale=1.0" name="viewport"/&gt;</p>
+<p class="p1">&lt;title&gt;KOVA Song Archive - Portfolio Visualizer&lt;/title&gt;</p>
+<p class="p1">&lt;script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"&gt;&lt;/script&gt;</p>
+<p class="p1">&lt;link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;amp;family=JetBrains+Mono:wght@500&amp;amp;display=swap" rel="stylesheet"/&gt;</p>
+<p class="p1">&lt;link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;amp;display=swap" rel="stylesheet"/&gt;</p>
+<p class="p1">&lt;script id="tailwind-config"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>tailwind.config = {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>darkMode: "class",</p>
+<p class="p1"><span class="Apple-converted-space">            </span>theme: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>extend: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>colors: {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"primary": "#000000",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"surface-container-low": "#f7f3eb",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"surface-bright": "#fdf9f1",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"on-background": "#1c1c17",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"secondary-container": "#e0dfdf",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"background": "#fdf9f1",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"on-primary-container": "#858383",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"tertiary-fixed": "#a1fa49",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"surface": "#fdf9f1",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"on-primary": "#ffffff",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"on-secondary-fixed-variant": "#464747",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"on-tertiary-fixed": "#0e2000",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"on-tertiary-container": "#539400",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"surface-container": "#f1ede5",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"inverse-primary": "#c9c6c5",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"on-error": "#ffffff",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"on-error-container": "#93000a",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"outline-variant": "#c4c7c7",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"primary-fixed": "#e5e2e1",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"primary-container": "#1c1b1b",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"on-primary-fixed-variant": "#474646",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"error": "#ba1a1a",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"on-tertiary": "#ffffff",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"on-secondary-container": "#626363",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"inverse-surface": "#31302b",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"primary-fixed-dim": "#c9c6c5",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"inverse-on-surface": "#f4f0e8",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"on-tertiary-fixed-variant": "#2a5000",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"tertiary": "#000000",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"outline": "#747878",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"error-container": "#ffdad6",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"on-primary-fixed": "#1c1b1b",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"on-surface": "#1c1c17",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"secondary-fixed-dim": "#c7c6c6",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"on-secondary-fixed": "#1a1c1c",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"tertiary-fixed-dim": "#87dc2c",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"surface-container-highest": "#e6e2da",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"tertiary-container": "#0e2000",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"on-surface-variant": "#444748",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"surface-variant": "#e6e2da",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"on-secondary": "#ffffff",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"surface-container-high": "#ece8e0",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"secondary": "#5e5e5e",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"surface-container-lowest": "#ffffff",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"secondary-fixed": "#e3e2e2",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"surface-tint": "#5f5e5e",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"surface-dim": "#dddad2"</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>borderRadius: {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"DEFAULT": "0.25rem",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"lg": "0.5rem",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"xl": "0.75rem",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"full": "9999px"</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>spacing: {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"section-gap": "120px",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"page-margin-mobile": "24px",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"page-margin-desktop": "80px",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"gutter": "32px",</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"element-gap": "16px"</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>fontFamily: {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"body-md": ["Hanken Grotesk"],</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"display-lg": ["Hanken Grotesk"],</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"headline-lg": ["Hanken Grotesk"],</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"headline-lg-mobile": ["Hanken Grotesk"],</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"label-technical": ["JetBrains Mono"]</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>fontSize: {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"body-md": ["16px", { lineHeight: "1.6", letterSpacing: "0.01em", fontWeight: "400" }],</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"display-lg": ["80px", { lineHeight: "1.0", letterSpacing: "-0.04em", fontWeight: "700" }],</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"headline-lg": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" }],</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"headline-lg-mobile": ["32px", { lineHeight: "1.1", fontWeight: "600" }],</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>"label-technical": ["12px", { lineHeight: "1.0", letterSpacing: "0.05em", fontWeight: "500" }]</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.material-symbols-outlined {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.icon-fill {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-variation-settings: 'FILL' 1;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.album-cover-transition {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 500ms ease-in-out;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.album-cover-transition:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>filter: grayscale(0);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>[v-cloak] { display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased selection:bg-tertiary-fixed selection:text-on-tertiary-fixed"&gt;</p>
+<p class="p1">&lt;!-- TopAppBar --&gt;</p>
+<p class="p1">&lt;header class="bg-background w-full top-0 border-b border-on-surface/10 flex justify-between items-center px-page-margin-desktop py-8 max-w-full"&gt;</p>
+<p class="p1">&lt;div class="flex items-center gap-12"&gt;</p>
+<p class="p1">&lt;h1 class="font-headline-lg text-headline-lg tracking-tighter text-primary"&gt;KOVA Song Archive&lt;/h1&gt;</p>
+<p class="p1">&lt;nav class="hidden md:flex gap-8"&gt;</p>
+<p class="p1">&lt;a class="text-primary font-bold border-b border-primary hover:text-tertiary-fixed-dim transition-colors duration-200 ease-in-out pb-1" href="#"&gt;Archive&lt;/a&gt;</p>
+<p class="p1">&lt;a class="text-secondary opacity-60 hover:text-tertiary-fixed-dim transition-colors duration-200 ease-in-out pb-1" href="#"&gt;Collections&lt;/a&gt;</p>
+<p class="p1">&lt;a class="text-secondary opacity-60 hover:text-tertiary-fixed-dim transition-colors duration-200 ease-in-out pb-1" href="#"&gt;Technical Specs&lt;/a&gt;</p>
+<p class="p1">&lt;/nav&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p1">&lt;div class="flex items-center gap-6"&gt;</p>
+<p class="p1">&lt;button aria-label="Search" class="text-primary hover:text-tertiary-fixed-dim transition-colors duration-200 ease-in-out"&gt;</p>
+<p class="p1">&lt;span class="material-symbols-outlined"&gt;search&lt;/span&gt;</p>
+<p class="p1">&lt;/button&gt;</p>
+<p class="p1">&lt;button aria-label="Menu" class="text-primary hover:text-tertiary-fixed-dim transition-colors duration-200 ease-in-out md:hidden"&gt;</p>
+<p class="p1">&lt;span class="material-symbols-outlined"&gt;menu&lt;/span&gt;</p>
+<p class="p1">&lt;/button&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p1">&lt;/header&gt;</p>
+<p class="p1">&lt;!-- Main Content --&gt;</p>
+<p class="p1">&lt;main class="flex-grow px-page-margin-desktop py-section-gap flex flex-col items-center"&gt;</p>
+<p class="p1">&lt;div class="w-full max-w-4xl flex flex-col gap-8" id="archive-container"&gt;</p>
+<p class="p1">&lt;!-- Loading State --&gt;</p>
+<p class="p1">&lt;div class="text-center py-20 animate-pulse" id="loading-state"&gt;</p>
+<p class="p1">&lt;span class="font-label-technical text-label-technical uppercase tracking-widest opacity-50"&gt;Fetching archive data...&lt;/span&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p1">&lt;!-- Dynamic Items will be injected here --&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p1">&lt;/main&gt;</p>
+<p class="p1">&lt;!-- Footer --&gt;</p>
+<p class="p1">&lt;footer class="bg-background w-full py-12 border-t border-on-surface/10 flex flex-col md:flex-row justify-between items-center px-page-margin-desktop mt-auto gap-6 md:gap-0"&gt;</p>
+<p class="p1">&lt;span class="font-label-technical text-label-technical text-primary opacity-80 hover:opacity-100 transition-opacity"&gt;© 2024 KOVA RS / 48kHz&lt;/span&gt;</p>
+<p class="p1">&lt;div class="flex gap-8"&gt;</p>
+<p class="p1">&lt;a class="font-label-technical text-label-technical text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#"&gt;Privacy&lt;/a&gt;</p>
+<p class="p1">&lt;a class="font-label-technical text-label-technical text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#"&gt;Terms&lt;/a&gt;</p>
+<p class="p1">&lt;a class="font-label-technical text-label-technical text-on-surface-variant hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#"&gt;Metadata Standards&lt;/a&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p1">&lt;/footer&gt;</p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>/**</p>
+<p class="p1"><span class="Apple-converted-space">         </span>* KOVA SONG ARCHIVE - DATA INTEGRATION</p>
+<p class="p1"><span class="Apple-converted-space">         </span>* -------------------------------------------------------------------------</p>
+<p class="p1"><span class="Apple-converted-space">         </span>* INSTRUCTIONS:<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">         </span>* 1. Go to your Google Sheet.</p>
+<p class="p1"><span class="Apple-converted-space">         </span>* 2. File &gt; Share &gt; Publish to web.</p>
+<p class="p1"><span class="Apple-converted-space">         </span>* 3. Select 'Entire Document' (or specific sheet) and 'Comma-separated values (.csv)'.</p>
+<p class="p1"><span class="Apple-converted-space">         </span>* 4. Copy the URL and replace the placeholder below.</p>
+<p class="p1"><span class="Apple-converted-space">         </span>* -------------------------------------------------------------------------</p>
+<p class="p1"><span class="Apple-converted-space">         </span>*/</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT-PLACEHOLDER-ID/pub?gid=0&amp;output=csv';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>async function fetchArchive() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const container = document.getElementById('archive-container');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const loading = document.getElementById('loading-state');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const response = await fetch(CSV_URL);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!response.ok) throw new Error('Network response was not ok');</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const csvText = await response.text();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const data = parseCSV(csvText);</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>renderItems(data);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (loading) loading.remove();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} catch (error) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.error('Error fetching archive:', error);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (loading) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>loading.innerHTML = `&lt;span class="text-error font-label-technical uppercase tracking-widest"&gt;Error loading data. Please check CSV URL.&lt;/span&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function parseCSV(csv) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const lines = csv.split(/\r?\n/);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const result = [];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (lines.length === 0) return result;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const headers = lines[0].split(',').map(h =&gt; h.trim().replace(/^"|"$/g, ''));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (let i = 1; i &lt; lines.length; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!lines[i].trim()) continue;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Simple CSV parsing that handles basic quoted strings</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const row = [];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let current = '';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let inQuotes = false;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>for (let char of lines[i]) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (char === '"') inQuotes = !inQuotes;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>else if (char === ',' &amp;&amp; !inQuotes) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>row.push(current.trim());</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>current = '';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>current += char;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>row.push(current.trim());</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const obj = {};</p>
+<p class="p1"><span class="Apple-converted-space">                </span>headers.forEach((header, index) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>let val = row[index] || '';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>obj[header] = val.replace(/^"|"$/g, '');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                </span>result.push(obj);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return result;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function renderItems(items) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const container = document.getElementById('archive-container');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>items.forEach(item =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const isHighlighted = item.Highlight &amp;&amp; item.Highlight.toLowerCase() === 'sí';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const highlightClass = isHighlighted ? 'border-b-2 border-[#7ed321]' : '';</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const html = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-[#ede9e1] relative flex flex-col md:flex-row items-start md:items-center justify-between p-10 border border-primary/10 ${highlightClass} gap-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="absolute top-4 right-6 font-label-technical text-[10px] text-[#9a9a9a] uppercase tracking-widest opacity-80"&gt;KOVA RS / 48kHz&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex items-center gap-10"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="w-28 h-28 overflow-hidden shrink-0 border border-primary/5"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>${item.Cover ?<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>`&lt;img alt="Album artwork for ${item.Song}" class="w-full h-full object-cover grayscale contrast-125 album-cover-transition hover:grayscale-0" src="${item.Cover}"/&gt;` :</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>`&lt;div class="w-full h-full bg-surface-variant flex items-center justify-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                        </span>&lt;span class="material-symbols-outlined text-5xl text-secondary opacity-50"&gt;album&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="flex flex-col gap-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;h2 class="column-song font-headline-lg-mobile text-headline-lg-mobile text-[#0b0b0b] font-bold"&gt;${item.Song || 'Unknown Track'}&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;p class="column-artist font-body-md text-body-md text-[#0b0b0b] font-normal"&gt;${item.Artist || 'Unknown Artist'}&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span class="font-label-technical text-[11px] text-[#9a9a9a] uppercase tracking-widest mt-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;span class="column-date"&gt;${item.Date || '---'}&lt;/span&gt; | &lt;span class="column-credits"&gt;${item.Credits || 'No metadata'}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex items-center w-full md:w-auto justify-end"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;a class="border border-primary bg-primary text-on-primary px-8 py-3 font-label-technical text-label-technical uppercase tracking-widest hover:bg-background hover:text-tertiary-fixed-dim hover:border-tertiary-fixed-dim transition-colors text-center" href="${item.Link || '#'}" target="_blank"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>Escuchar</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>container.insertAdjacentHTML('beforeend', html);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Initialize</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.addEventListener('DOMContentLoaded', fetchArchive);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;&lt;/html&gt;</p>
+</body>
+</html>
