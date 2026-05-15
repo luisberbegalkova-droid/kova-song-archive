@@ -35,6 +35,7 @@
     </style>
 </head>
 <body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased">
+    
     <header class="bg-background w-full border-b border-on-surface/10 flex justify-between items-center px-10 py-8">
         <h1 class="text-3xl font-bold tracking-tighter text-primary uppercase">KOVA Song Archive</h1>
         <nav class="hidden md:flex gap-8 font-label-technical text-xs uppercase tracking-widest">
@@ -46,31 +47,35 @@
     <main class="flex-grow px-10 py-20 flex flex-col items-center">
         <div class="w-full max-w-4xl flex flex-col gap-8" id="archive-container">
             <div class="text-center py-20 animate-pulse" id="loading-state">
-                <span class="font-label-technical text-xs uppercase tracking-widest opacity-50">Fetching archive data...</span>
+                <span class="font-label-technical text-xs uppercase tracking-widest opacity-50 text-[#9a9a9a]">Connecting to database / 48kHz...</span>
             </div>
         </div>
     </main>
 
     <footer class="py-12 border-t border-on-surface/10 flex justify-between px-10">
-        <span class="font-label-technical text-[10px] opacity-60">© 2024 KOVA RS / 48kHz</span>
+        <span class="font-label-technical text-[10px] text-[#9a9a9a] uppercase tracking-widest">© 2024 KOVA RS / 48kHz</span>
     </footer>
 
     <script>
-        // REEMPLAZA ESTE ENLACE con tu enlace de "Publicar en la Web" (formato CSV)
-        const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT-TU-ID-AQUI/pub?gid=0&output=csv';
+        // Enlace CSV actualizado con tu base de datos
+        const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRCZ5H_tX3r41I_npaw0nNJWxoGGucLKvTO2mC0w1SdSm8g7T1nEte1wcVhldjT14u-tygZMCnt9eVY/pub?gid=0&single=true&output=csv';
 
         async function fetchArchive() {
             const container = document.getElementById('archive-container');
             const loading = document.getElementById('loading-state');
+            
             try {
                 const response = await fetch(CSV_URL);
                 const csvText = await response.text();
+                
+                // Procesamiento de CSV robusto
                 const lines = csvText.split(/\r?\n/);
                 const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
                 const items = [];
                 
                 for (let i = 1; i < lines.length; i++) {
                     if (!lines[i].trim()) continue;
+                    // Regex para separar por comas ignorando comas dentro de comillas
                     const values = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                     const obj = {};
                     headers.forEach((header, index) => {
@@ -80,36 +85,52 @@
                 }
 
                 if (loading) loading.remove();
-                
+
                 items.forEach(item => {
-                    const isHighlighted = item.Highlight && item.Highlight.toLowerCase() === 'sí';
-                    const highlightClass = isHighlighted ? 'border-b-2 border-[#7ed321]' : 'border-primary/10';
-                    
+                    // Mapeo según tu estructura: Song Artist Genre Date Credits Cover Link
                     const html = `
-                        <div class="bg-[#ede9e1] relative flex flex-col md:flex-row items-start md:items-center justify-between p-10 border ${highlightClass} gap-8">
+                        <div class="bg-[#ede9e1] relative flex flex-col md:flex-row items-start md:items-center justify-between p-10 border border-primary/10 gap-8">
                             <span class="absolute top-4 right-6 font-label-technical text-[10px] text-[#9a9a9a] uppercase tracking-widest">KOVA RS / 48kHz</span>
+                            
                             <div class="flex items-center gap-10">
-                                <div class="w-28 h-28 overflow-hidden shrink-0 bg-white">
-                                    <img alt="${item.Song}" class="w-full h-full object-cover grayscale contrast-125 album-cover-transition hover:grayscale-0" src="${item.Cover || ''}" onerror="this.style.display='none'"/>
+                                <div class="w-28 h-28 overflow-hidden shrink-0 bg-white border border-black/5">
+                                    <img alt="${item.Song}" class="w-full h-full object-cover grayscale contrast-125 album-cover-transition hover:grayscale-0" 
+                                         src="${item.Cover || ''}" 
+                                         onerror="this.src='https://via.placeholder.com/200?text=NO+IMAGE'"/>
                                 </div>
+
                                 <div class="flex flex-col gap-1">
-                                    <h2 class="text-xl text-[#0b0b0b] font-bold">${item.Song || 'Unknown'}</h2>
-                                    <p class="text-sm text-[#0b0b0b] opacity-80">${item.Artist || 'Artist'}</p>
-                                    <div class="font-label-technical text-[10px] text-[#9a9a9a] uppercase tracking-widest mt-2">
-                                        ${item.Date || ''} | ${item.Credits || ''}
+                                    <h2 class="text-2xl text-[#0b0b0b] font-bold tracking-tight">${item.Song || 'Unknown'}</h2>
+                                    <p class="text-base text-[#0b0b0b] opacity-90">${item.Artist || 'Artist'}</p>
+                                    
+                                    <div class="flex flex-wrap gap-x-3 gap-y-1 mt-3">
+                                        <span class="font-label-technical text-[10px] text-[#9a9a9a] uppercase tracking-widest">${item.Date || '---'}</span>
+                                        <span class="text-[#9a9a9a] text-[10px]">•</span>
+                                        <span class="font-label-technical text-[10px] text-[#9a9a9a] uppercase tracking-widest">${item.Genre || 'GENRE'}</span>
+                                        <span class="text-[#9a9a9a] text-[10px]">•</span>
+                                        <span class="font-label-technical text-[10px] text-[#9a9a9a] uppercase tracking-widest">${item.Credits || 'Full Credits'}</span>
                                     </div>
                                 </div>
                             </div>
-                            <a href="${item.Link || '#'}" target="_blank" class="border border-primary bg-primary text-white px-8 py-3 font-label-technical text-[10px] uppercase tracking-widest hover:bg-transparent hover:text-black transition-all">
-                                Escuchar
-                            </a>
+
+                            <div class="flex items-center w-full md:w-auto">
+                                <a href="${item.Link || '#'}" target="_blank" 
+                                   class="w-full md:w-auto border border-primary bg-primary text-white px-10 py-4 font-label-technical text-[11px] uppercase tracking-[0.2em] hover:bg-transparent hover:text-black transition-all text-center">
+                                    Escuchar
+                                </a>
+                            </div>
                         </div>`;
                     container.insertAdjacentHTML('beforeend', html);
                 });
+
             } catch (e) {
-                loading.innerHTML = "Error cargando datos. Revisa el enlace CSV.";
+                console.error(e);
+                if (loading) {
+                    loading.innerHTML = `<span class="text-red-500 font-label-technical text-xs uppercase">Error: Check CSV Connection</span>`;
+                }
             }
         }
+
         document.addEventListener('DOMContentLoaded', fetchArchive);
     </script>
 </body>
